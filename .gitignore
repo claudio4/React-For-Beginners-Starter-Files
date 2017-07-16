@@ -1,4 +1,5 @@
 node_modules/
+/catch-of-the-day/FirebaseLoginData.js
 *.zip
 .DS_Store
 .idea
