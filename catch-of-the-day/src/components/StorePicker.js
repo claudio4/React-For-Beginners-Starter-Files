@@ -5,7 +5,11 @@ import {getFunName} from '../helpers';
 class StorePicker extends React.Component {
     constructor() {
         super();
+        this.state = {
+            latestStore: localStorage.getItem("latest-store")
+        }
         this.goToStore = this.goToStore.bind(this);
+        this.goToLatestStore = this.goToLatestStore.bind(this);
     }
     goToStore(e) {
         e.preventDefault();
@@ -13,12 +17,17 @@ class StorePicker extends React.Component {
 
         this.context.router.transitionTo(`/store/${storeId}`);
     }
+    goToLatestStore(e) {
+        e.preventDefault();
+        this.context.router.transitionTo(`/store/${this.state.latestStore}`); 
+    }
     render() {
         return (
             <form className="store-selector" onSubmit={this.goToStore}>
                 <h2>Please Enter A store</h2>
                 <input type="text" required placeholder="Store name" name="name" defaultValue={getFunName()} ref={(input) => {this.storeInput = input}}/>
                 <button type="submit">Visit store</button>
+                <button onClick={this.goToLatestStore}>Visit {this.state.latestStore}</button>
             </form>
         )
     }

@@ -28,7 +28,7 @@ class App extends React.Component {
             context: this,
             state: 'fishes'
         });
-
+        localStorage.setItem('latest-store', this.props.params.storeId);
         const localStorageRef = localStorage.getItem(`order-${this.props.params.storeId}`);
         if(localStorageRef) {
             this.setState({
