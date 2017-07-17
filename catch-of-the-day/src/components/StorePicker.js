@@ -22,12 +22,13 @@ class StorePicker extends React.Component {
         this.context.router.transitionTo(`/store/${this.state.latestStore}`); 
     }
     render() {
+        var latestStoreButton = this.state.latestStore ? <button onClick={this.goToLatestStore}>Visit {this.state.latestStore}</button> : null
         return (
             <form className="store-selector" onSubmit={this.goToStore}>
                 <h2>Please Enter A store</h2>
                 <input type="text" required placeholder="Store name" name="name" defaultValue={getFunName()} ref={(input) => {this.storeInput = input}}/>
                 <button type="submit">Visit store</button>
-                <button onClick={this.goToLatestStore}>Visit {this.state.latestStore}</button>
+                {latestStoreButton}
             </form>
         )
     }
